@@ -1,0 +1,20 @@
+{
+  "evento": "Nombre del Evento",
+  "fecha": "2026-11-09",
+  "recordatorios": [
+    {
+      "lista": "📚 Libros por Leer",
+      "titulo": "Nombre del libro - Autor",
+      "notas": "Recomendado en Nombre del Evento. Contexto / Por qué leerlo: ...",
+      "prioridad": "low",
+      "due": null
+    },
+    {
+      "lista": "🎯 Tareas & Acciones",
+      "titulo": "Revisar ...",
+      "notas": "Contexto: ... Próximo paso: ...",
+      "prioridad": "high",
+      "due": "2026-11-16"
+    }
+  ]
+}
