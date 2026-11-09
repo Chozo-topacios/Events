@@ -1,0 +1,635 @@
+{
+  "evento": "Shift 2026",
+  "fecha": "2026-11-09",
+  "tipo": "Conferencia",
+  "tema": "Negocios",
+  "ponentes": "Hyenuk chu y varios",
+  "notas": "",
+  "fotos": [
+    {
+      "archivo": "fotos/001.jpg",
+      "original": "IMG_0715.jpeg",
+      "id": "d32fe4d0fdbc517e76de2711faa655cc"
+    },
+    {
+      "archivo": "fotos/002.jpg",
+      "original": "IMG_3536.jpeg",
+      "id": "a72f21dcca4d9020b332f5b61715ad28"
+    },
+    {
+      "archivo": "fotos/003.jpg",
+      "original": "IMG_3537.jpeg",
+      "id": "a1ea211a3dc6b3b087ce9786d75aae0a"
+    },
+    {
+      "archivo": "fotos/004.jpg",
+      "original": "IMG_3538.jpeg",
+      "id": "645ec8284d556a89373e4038188fdc69"
+    },
+    {
+      "archivo": "fotos/005.jpg",
+      "original": "IMG_3539.jpeg",
+      "id": "3ca23053f807c7343be3fb3c889a6076"
+    },
+    {
+      "archivo": "fotos/006.jpg",
+      "original": "IMG_3540.jpeg",
+      "id": "c9d0f08e98d8e442aaf485d37a902016"
+    },
+    {
+      "archivo": "fotos/007.jpg",
+      "original": "IMG_3541.jpeg",
+      "id": "555b434daa330e04f41dac573373c7ea"
+    },
+    {
+      "archivo": "fotos/008.jpg",
+      "original": "IMG_3542.jpeg",
+      "id": "21be129c6296b6a49e485cfe3bc7323a"
+    },
+    {
+      "archivo": "fotos/009.jpg",
+      "original": "IMG_3543.jpeg",
+      "id": "98cbb4eaddf2810edd9579f666a1867c"
+    },
+    {
+      "archivo": "fotos/010.jpg",
+      "original": "IMG_3544.jpeg",
+      "id": "04ddefec048bfe42f6d97b999f2df8a6"
+    },
+    {
+      "archivo": "fotos/011.jpg",
+      "original": "IMG_3545.jpeg",
+      "id": "19e3bc5320889e572b322ed08de1c984"
+    },
+    {
+      "archivo": "fotos/012.jpg",
+      "original": "IMG_3546.jpeg",
+      "id": "5034a60656d001ac144f87924c8f87a2"
+    },
+    {
+      "archivo": "fotos/013.jpg",
+      "original": "IMG_3547.jpeg",
+      "id": "28df038f402363d5bb904c3778a5c4ba"
+    },
+    {
+      "archivo": "fotos/014.jpg",
+      "original": "IMG_3551.jpeg",
+      "id": "e2cdcbe4d2fc5c84e51e0a098115b3bb"
+    },
+    {
+      "archivo": "fotos/015.jpg",
+      "original": "IMG_3552.jpeg",
+      "id": "f1c7525369729427799d99a6c4f9e385"
+    },
+    {
+      "archivo": "fotos/016.jpg",
+      "original": "IMG_3553.jpeg",
+      "id": "07ae285514c03af469b4d089403eca69"
+    },
+    {
+      "archivo": "fotos/017.jpg",
+      "original": "IMG_3554.jpeg",
+      "id": "48aea4ec8ee83ac9e7ec7bf78f3d7043"
+    },
+    {
+      "archivo": "fotos/018.jpg",
+      "original": "IMG_3555.jpeg",
+      "id": "6241f3d4e9fb14a1a94aefdbf219c912"
+    },
+    {
+      "archivo": "fotos/019.jpg",
+      "original": "IMG_3556.jpeg",
+      "id": "100d75ed307dcb933e728fb7e13bcebe"
+    },
+    {
+      "archivo": "fotos/020.jpg",
+      "original": "IMG_3557.jpeg",
+      "id": "c6e522da3cae3b47e198a9285d673a86"
+    },
+    {
+      "archivo": "fotos/021.jpg",
+      "original": "IMG_3558.jpeg",
+      "id": "80299380e934e563af72051f14fd3c4c"
+    },
+    {
+      "archivo": "fotos/022.jpg",
+      "original": "IMG_3559.jpeg",
+      "id": "ba052f5b6ab0e2ffa8c88981305962d9"
+    },
+    {
+      "archivo": "fotos/023.jpg",
+      "original": "IMG_3561.jpeg",
+      "id": "4fc7c957204b7f9515f75efcf3fd4d35"
+    },
+    {
+      "archivo": "fotos/024.jpg",
+      "original": "IMG_3562.jpeg",
+      "id": "b9725fb7353de63b5237f51761c9a4f1"
+    },
+    {
+      "archivo": "fotos/025.jpg",
+      "original": "IMG_3563.jpeg",
+      "id": "604a648dd0aa5ff7ac648295a3e9a73a"
+    },
+    {
+      "archivo": "fotos/026.jpg",
+      "original": "IMG_3569.jpeg",
+      "id": "98c03a2ddd59974df3185b0970201ffb"
+    },
+    {
+      "archivo": "fotos/027.jpg",
+      "original": "IMG_3570.jpeg",
+      "id": "fd0bad12dca7e20c115008fd9c9ed3a0"
+    },
+    {
+      "archivo": "fotos/028.jpg",
+      "original": "IMG_3575.jpeg",
+      "id": "26b6fecb8ea06e1d0e185cb66b113b3f"
+    },
+    {
+      "archivo": "fotos/029.jpg",
+      "original": "IMG_3576.jpeg",
+      "id": "52c6a3b5ae2754a573257e465fb0f0aa"
+    },
+    {
+      "archivo": "fotos/030.jpg",
+      "original": "IMG_3577.jpeg",
+      "id": "cb5e35499f38bbe3a87a28a35e710f77"
+    },
+    {
+      "archivo": "fotos/031.jpg",
+      "original": "IMG_3578.jpeg",
+      "id": "f2c926c3b748bcc4dc6be14f3caaf2e2"
+    },
+    {
+      "archivo": "fotos/032.jpg",
+      "original": "IMG_3579.jpeg",
+      "id": "474178f82fb031fe6c2430b44339c255"
+    },
+    {
+      "archivo": "fotos/033.jpg",
+      "original": "IMG_3580.jpeg",
+      "id": "984e80cec5f0c4d497f0cfdf7679e811"
+    },
+    {
+      "archivo": "fotos/034.jpg",
+      "original": "IMG_3581.jpeg",
+      "id": "e91264c71e6d9c21bd3dd172be7e4e5d"
+    },
+    {
+      "archivo": "fotos/035.jpg",
+      "original": "IMG_3582.jpeg",
+      "id": "49812c4f72078096a1d0909fac1eea74"
+    },
+    {
+      "archivo": "fotos/036.jpg",
+      "original": "IMG_3583.jpeg",
+      "id": "0cae279b6ae8e1dcd163246ad4ccb9a6"
+    },
+    {
+      "archivo": "fotos/037.jpg",
+      "original": "IMG_3584.jpeg",
+      "id": "054cf3fdfafaa8fac974ebcc38f27bca"
+    },
+    {
+      "archivo": "fotos/038.jpg",
+      "original": "IMG_3585.jpeg",
+      "id": "83f2e10fe33943e058860be6cc53142d"
+    },
+    {
+      "archivo": "fotos/039.jpg",
+      "original": "IMG_3586.jpeg",
+      "id": "cd46de4bbc5b047e8059157e028764b2"
+    },
+    {
+      "archivo": "fotos/040.jpg",
+      "original": "IMG_3587.jpeg",
+      "id": "50a571c1455316e107935c788cda1995"
+    },
+    {
+      "archivo": "fotos/041.jpg",
+      "original": "IMG_3588.jpeg",
+      "id": "d16908975a98347f536359093a2fff22"
+    },
+    {
+      "archivo": "fotos/042.jpg",
+      "original": "IMG_3589.jpeg",
+      "id": "45e665d4544a7580265b3725c04ae37d"
+    },
+    {
+      "archivo": "fotos/043.jpg",
+      "original": "IMG_3590.jpeg",
+      "id": "800f47cf7e209781c70321612cc0e3d5"
+    },
+    {
+      "archivo": "fotos/044.jpg",
+      "original": "IMG_3591.jpeg",
+      "id": "daba72f8ebc3ec91a80220e01135d6b7"
+    },
+    {
+      "archivo": "fotos/045.jpg",
+      "original": "IMG_3592.jpeg",
+      "id": "bc492199d384416cd79361007b9c0c35"
+    },
+    {
+      "archivo": "fotos/046.jpg",
+      "original": "IMG_3593.jpeg",
+      "id": "569a42fddd94a4066eb442cdb7efb034"
+    },
+    {
+      "archivo": "fotos/047.jpg",
+      "original": "IMG_3594.jpeg",
+      "id": "ee609ec0fac08bfcb4583ba7d9bab05b"
+    },
+    {
+      "archivo": "fotos/048.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.39.11.jpeg",
+      "id": "b5d008775739c2ab97aa85d165b972a1"
+    },
+    {
+      "archivo": "fotos/049.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.39.11 (1).jpeg",
+      "id": "9de6879d24a35066fa96938399f6de69"
+    },
+    {
+      "archivo": "fotos/050.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.39.11 (2).jpeg",
+      "id": "51448af4afebad6dffd4bb4ab7d9dbc6"
+    },
+    {
+      "archivo": "fotos/051.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.39.12.jpeg",
+      "id": "244b8e08b26f6b5bc83155425030a279"
+    },
+    {
+      "archivo": "fotos/052.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.39.12 (1).jpeg",
+      "id": "301826c4bbb21da1c15357978d880252"
+    },
+    {
+      "archivo": "fotos/053.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.03.jpeg",
+      "id": "178b5dc4bcf70d04240393d8c47983c1"
+    },
+    {
+      "archivo": "fotos/054.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.05.jpeg",
+      "id": "7b8acfc378ad7e75533ba38207eba195"
+    },
+    {
+      "archivo": "fotos/055.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.05 (1).jpeg",
+      "id": "f2f79320b0788af73e83e3b3712d637a"
+    },
+    {
+      "archivo": "fotos/056.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.05 (2).jpeg",
+      "id": "fe273a65836e89a1a1464b7ae9385f07"
+    },
+    {
+      "archivo": "fotos/057.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.05 (3).jpeg",
+      "id": "aed7269d04dfa6a27a93312803d35043"
+    },
+    {
+      "archivo": "fotos/058.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.05 (4).jpeg",
+      "id": "c6f1ca5f3d6988727bff8cf8ba705a1e"
+    },
+    {
+      "archivo": "fotos/059.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.05 (5).jpeg",
+      "id": "c54f0456781245a4b89bf323e976447b"
+    },
+    {
+      "archivo": "fotos/060.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.05 (6).jpeg",
+      "id": "b8db9972bba0706c969ea9638ac57ccc"
+    },
+    {
+      "archivo": "fotos/061.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.05 (7).jpeg",
+      "id": "f262535d7463b8c1b6d688dc8b037a2d"
+    },
+    {
+      "archivo": "fotos/062.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.05 (8).jpeg",
+      "id": "181036eebaad958a85c3b87430660f40"
+    },
+    {
+      "archivo": "fotos/063.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.05 (9).jpeg",
+      "id": "6571e74ccc7ee4a860d9a7f0c55feed7"
+    },
+    {
+      "archivo": "fotos/064.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.05 (10).jpeg",
+      "id": "51435d430d30246f48a7c9e88a71acc6"
+    },
+    {
+      "archivo": "fotos/065.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.05 (11).jpeg",
+      "id": "c18d18477d81d3e4aea39eeffcdd101b"
+    },
+    {
+      "archivo": "fotos/066.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.05 (12).jpeg",
+      "id": "d5a7eccd1463a0c2d8dabe68d27dc34a"
+    },
+    {
+      "archivo": "fotos/067.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.05 (13).jpeg",
+      "id": "cfc602620893264bcc69f9550f2ded92"
+    },
+    {
+      "archivo": "fotos/068.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.05 (14).jpeg",
+      "id": "20635864d5db91778762e278bbc53ea2"
+    },
+    {
+      "archivo": "fotos/069.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06.jpeg",
+      "id": "06bfa70d0635c1e8bf17ab023b5b7421"
+    },
+    {
+      "archivo": "fotos/070.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (1).jpeg",
+      "id": "6e4abb12f99fb3e8f5d4266a6207b45e"
+    },
+    {
+      "archivo": "fotos/071.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (2).jpeg",
+      "id": "e4a7278aa6cadecec50a6ca6653fc8f2"
+    },
+    {
+      "archivo": "fotos/072.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (3).jpeg",
+      "id": "277c8ae962a541d15f824011f67a9b9f"
+    },
+    {
+      "archivo": "fotos/073.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (4).jpeg",
+      "id": "7892bf6ed7873e8fdad026312fe83bd3"
+    },
+    {
+      "archivo": "fotos/074.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (5).jpeg",
+      "id": "4c18855d88e89f3e58de0760499c033d"
+    },
+    {
+      "archivo": "fotos/075.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (6).jpeg",
+      "id": "22bcff403fb93f82e1b33c97cf863731"
+    },
+    {
+      "archivo": "fotos/076.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (7).jpeg",
+      "id": "2619904ec380746b5e945cfa59496b51"
+    },
+    {
+      "archivo": "fotos/077.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (8).jpeg",
+      "id": "22eea5b85c5dc7ff9673939f2d021cd4"
+    },
+    {
+      "archivo": "fotos/078.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (9).jpeg",
+      "id": "e7539ba64b015a563c402bdec835f445"
+    },
+    {
+      "archivo": "fotos/079.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (10).jpeg",
+      "id": "06231b11739c4a54555eddc3059c636c"
+    },
+    {
+      "archivo": "fotos/080.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (11).jpeg",
+      "id": "ecc24f6089d4cea611d3ebc84a4e953c"
+    },
+    {
+      "archivo": "fotos/081.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (12).jpeg",
+      "id": "f5f3e3a736d8bc19c15c23eafcad595e"
+    },
+    {
+      "archivo": "fotos/082.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (13).jpeg",
+      "id": "c1d8cc7659d2e6acbbfea3065531bae5"
+    },
+    {
+      "archivo": "fotos/083.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (14).jpeg",
+      "id": "7cfb4859ea41cb484751e3e10163e4d1"
+    },
+    {
+      "archivo": "fotos/084.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (15).jpeg",
+      "id": "1a125ee1f339e14d85f3174c359f7f15"
+    },
+    {
+      "archivo": "fotos/085.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (16).jpeg",
+      "id": "f9c76bb370fb76f1ead2016cb787522d"
+    },
+    {
+      "archivo": "fotos/086.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (17).jpeg",
+      "id": "c0c0596538baf7977d8e0bda202c083d"
+    },
+    {
+      "archivo": "fotos/087.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (18).jpeg",
+      "id": "cdabd183777ed400ea8591130e8a367b"
+    },
+    {
+      "archivo": "fotos/088.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (19).jpeg",
+      "id": "833e9c1fb4a8a8d9332b7779ca938ac5"
+    },
+    {
+      "archivo": "fotos/089.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (20).jpeg",
+      "id": "a875f107f5b5c9a05633d78907cb4490"
+    },
+    {
+      "archivo": "fotos/090.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (21).jpeg",
+      "id": "141e935a892073e72a866b287cf12f0f"
+    },
+    {
+      "archivo": "fotos/091.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (22).jpeg",
+      "id": "fbd6bdd3d84b5063268fd470ded3c43e"
+    },
+    {
+      "archivo": "fotos/092.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (23).jpeg",
+      "id": "99f988ba3a1923004f753df80dbac97b"
+    },
+    {
+      "archivo": "fotos/093.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (24).jpeg",
+      "id": "5625af523a1de21bb9d80fc1a8ce9bbc"
+    },
+    {
+      "archivo": "fotos/094.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (25).jpeg",
+      "id": "2c37d5457e6be25c0558a0e78907c633"
+    },
+    {
+      "archivo": "fotos/095.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (26).jpeg",
+      "id": "261873c35b6cd95940a0b88b58ec2b69"
+    },
+    {
+      "archivo": "fotos/096.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (27).jpeg",
+      "id": "4fe0e204e593cf1980e6c7b02b786297"
+    },
+    {
+      "archivo": "fotos/097.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (28).jpeg",
+      "id": "2e9a68ce37198b5f4ad090adb3c44959"
+    },
+    {
+      "archivo": "fotos/098.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (29).jpeg",
+      "id": "9585f4ffab97b45c0d777171f0691033"
+    },
+    {
+      "archivo": "fotos/099.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (30).jpeg",
+      "id": "31697999b1a78534ea3808804f3c0223"
+    },
+    {
+      "archivo": "fotos/100.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (31).jpeg",
+      "id": "d4ce6ad49713b5b1b8730bcf86c18985"
+    },
+    {
+      "archivo": "fotos/101.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (32).jpeg",
+      "id": "de797818f71fbe827b6bc7e829b5c895"
+    },
+    {
+      "archivo": "fotos/102.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (33).jpeg",
+      "id": "b0cbc320111292f1d994fb269a47ee3c"
+    },
+    {
+      "archivo": "fotos/103.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (34).jpeg",
+      "id": "4a7eaf92067f09269cd58a9e13a21366"
+    },
+    {
+      "archivo": "fotos/104.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.06 (35).jpeg",
+      "id": "aac65e31408579887fb7aa9f04b151e2"
+    },
+    {
+      "archivo": "fotos/105.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.16.jpeg",
+      "id": "f65f7dc9edb9cba89538c70767404e56"
+    },
+    {
+      "archivo": "fotos/106.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.16 (1).jpeg",
+      "id": "b90fcac9a8d68017375b9de3bddee534"
+    },
+    {
+      "archivo": "fotos/107.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.16 (2).jpeg",
+      "id": "d2c82586107e2a34bfefc8c2a1f11926"
+    },
+    {
+      "archivo": "fotos/108.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.16 (3).jpeg",
+      "id": "1ab82efdbb535f69db293f9afa9efc46"
+    },
+    {
+      "archivo": "fotos/109.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.16 (4).jpeg",
+      "id": "6477c5d63c645e2701a6e71a2a2d69c7"
+    },
+    {
+      "archivo": "fotos/110.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.16 (5).jpeg",
+      "id": "69f409906baf350780c075775f705a47"
+    },
+    {
+      "archivo": "fotos/111.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.17.jpeg",
+      "id": "d6c9a2fc596e5942232c50a59b6e3578"
+    },
+    {
+      "archivo": "fotos/112.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.17 (1).jpeg",
+      "id": "2789b3e06697ef5295ef909867b1f480"
+    },
+    {
+      "archivo": "fotos/113.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.17 (2).jpeg",
+      "id": "f1dcb506a624834ceb666f03e333e44d"
+    },
+    {
+      "archivo": "fotos/114.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.17 (3).jpeg",
+      "id": "60feccf29b51b13a237b468ddc196306"
+    },
+    {
+      "archivo": "fotos/115.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.17 (4).jpeg",
+      "id": "b3afe549c1484268be907151db65a401"
+    },
+    {
+      "archivo": "fotos/116.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.17 (5).jpeg",
+      "id": "bf59f626d2150d485e86a3445aa0305e"
+    },
+    {
+      "archivo": "fotos/117.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.17 (6).jpeg",
+      "id": "d3d807977700299e4e17b55c63a23262"
+    },
+    {
+      "archivo": "fotos/118.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.17 (7).jpeg",
+      "id": "f21cc6ef7d822b7a8a421135c4dbb073"
+    },
+    {
+      "archivo": "fotos/119.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.17 (8).jpeg",
+      "id": "3429f45e04700d4bdcecedf554d8d40d"
+    },
+    {
+      "archivo": "fotos/120.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.17 (9).jpeg",
+      "id": "f917560a9ed74d6c0499ce06e192b731"
+    },
+    {
+      "archivo": "fotos/121.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.17 (10).jpeg",
+      "id": "bac43219af6123a545225a0dad78d47e"
+    },
+    {
+      "archivo": "fotos/122.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.17 (11).jpeg",
+      "id": "cbe9fe61f121216f6d26f4fdd2d3d8ac"
+    },
+    {
+      "archivo": "fotos/123.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.17 (12).jpeg",
+      "id": "eba9b7a704bded32527c294e1df8d97e"
+    },
+    {
+      "archivo": "fotos/124.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.17 (13).jpeg",
+      "id": "bd32e377600473baa718b7c996a5e473"
+    },
+    {
+      "archivo": "fotos/125.jpg",
+      "original": "WhatsApp Image 2026-11-09 at 17.40.17 (14).jpeg",
+      "id": "c5b51bb5ee2c8797aab398c9e22f7caa"
+    }
+  ]
+}

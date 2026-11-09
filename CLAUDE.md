@@ -23,7 +23,16 @@ tecnología, crecimiento personal, conferencias, etc.) y los conviertes en conoc
 4. Generar el PDF con la skill `crear-pdf`: `eventos/AAAA-MM-DD-nombre-del-evento.pdf`.
 5. Commit + push al branch de trabajo y entregar al usuario el PDF y la ruta de los archivos.
 
-## Salida: SIEMPRE dos secciones
+## Salida: repaso completo del evento
+Además de las dos secciones obligatorias, el entregable SIEMPRE incluye (para que el usuario repase todo lo visto):
+- **Resumen en 30 segundos** (un párrafo con la idea central del evento).
+- **Repaso por charla**: un bloque por ponente con sus conceptos, marcos, cifras y frases clave.
+- **📊 Datos clave y cifras** en tabla.
+- **🔗 Links, herramientas y contactos** (URLs, papers, apps, redes de los ponentes; marcar "verificar" si viene de notas ilegibles).
+- **Notas sobre el material** (fotos ilegibles, datos a confirmar).
+- Leer también las notas manuscritas del usuario que vengan en las fotos e integrarlas.
+
+## Secciones obligatorias
 
 ### SECCIÓN 1: Resumen de Valor
 - **📌 Ideas Clave / Key Takeaways:** 3 a 5 conceptos, lenguaje directo y ejecutivo.

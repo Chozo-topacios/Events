@@ -1,0 +1,188 @@
+{
+  "evento": "Shift 2026",
+  "fecha": "2026-11-09",
+  "recordatorios": [
+    {
+      "lista": "📚 Libros por Leer",
+      "titulo": "De cero a inversor en ETFs - Luis Ángel Hernández",
+      "notas": "Recomendado en Shift 2026. Contexto / Por qué leerlo: es el libro del ponente de ETFs, una guía práctica para armar tu núcleo indexado desde Latam.",
+      "prioridad": "low",
+      "due": null
+    },
+    {
+      "lista": "📚 Libros por Leer",
+      "titulo": "Una guía completa de los ETFs (2.ª ed.) - Joanne M. Hill y Elisabeth Kashner (CFA Institute Research Foundation)",
+      "notas": "Recomendado en Shift 2026. Contexto / Por qué leerlo: es la referencia técnica del CFA sobre cómo funcionan los ETF (estructura, costos, liquidez).",
+      "prioridad": "low",
+      "due": null
+    },
+    {
+      "lista": "📚 Libros por Leer",
+      "titulo": "ETPedia: The Ultimate Guide to Exchange-Traded Products - WisdomTree",
+      "notas": "Recomendado en Shift 2026. Contexto / Por qué leerlo: catálogo y mecánica de los ETP, incluidos los de opciones (covered call) que se mostraron.",
+      "prioridad": "low",
+      "due": null
+    },
+    {
+      "lista": "📚 Libros por Leer",
+      "titulo": "Guide to ETFs - J.P. Morgan Asset Management",
+      "notas": "Recomendado en Shift 2026. Contexto / Por qué leerlo: un repaso rápido y gratuito del ecosistema ETF.",
+      "prioridad": "low",
+      "due": null
+    },
+    {
+      "lista": "📚 Libros por Leer",
+      "titulo": "Thinking in Bets (Pensar en apuestas) - Annie Duke",
+      "notas": "Recomendado en Shift 2026 (según tus notas). Contexto / Por qué leerlo: decidir bien con incertidumbre, separando la calidad de la decisión de la del resultado.",
+      "prioridad": "low",
+      "due": null
+    },
+    {
+      "lista": "📚 Libros por Leer",
+      "titulo": "Algorithms to Live By - Brian Christian y Tom Griffiths",
+      "notas": "Recomendado en Shift 2026. Contexto / Por qué leerlo: aplica pensamiento algorítmico a decisiones cotidianas, en la misma línea que «ponerle número a la regla».",
+      "prioridad": "low",
+      "due": null
+    },
+    {
+      "lista": "📚 Libros por Leer",
+      "titulo": "Algorithmic Trading: Winning Strategies and Their Rationale - Ernest P. Chan",
+      "notas": "Recomendado en Shift 2026. Contexto / Por qué leerlo: estrategias rule based con su lógica estadística, la base para tus primeras reglas escritas.",
+      "prioridad": "low",
+      "due": null
+    },
+    {
+      "lista": "📚 Libros por Leer",
+      "titulo": "Advances in Financial Machine Learning - Marcos López de Prado",
+      "notas": "Recomendado en Shift 2026. Contexto / Por qué leerlo: cómo evitar el sobreajuste y el *look-ahead bias* al usar ML/IA en trading.",
+      "prioridad": "low",
+      "due": null
+    },
+    {
+      "lista": "📚 Libros por Leer",
+      "titulo": "Machine Learning for Algorithmic Trading (2.ª ed.) - Stefan Jansen",
+      "notas": "Recomendado en Shift 2026. Contexto / Por qué leerlo: un manual práctico en Python, de los datos al backtest, para llevar las reglas a código.",
+      "prioridad": "low",
+      "due": null
+    },
+    {
+      "lista": "📚 Libros por Leer",
+      "titulo": "Rediseña tu vida - Xavi Illingworth",
+      "notas": "Recomendado en Shift 2026. Contexto / Por qué leerlo: el ejercicio de «diseñar tu siguiente capítulo». Es gratis escribiendo LIBRO a @mentalizadorx.",
+      "prioridad": "low",
+      "due": null
+    },
+    {
+      "lista": "📚 Libros por Leer",
+      "titulo": "Options, Futures and Other Derivatives - John C. Hull",
+      "notas": "Recomendado en Shift 2026. Contexto / Por qué leerlo: la referencia para entender las opciones (covered call, SPX) antes de operarlas.",
+      "prioridad": "low",
+      "due": null
+    },
+    {
+      "lista": "📚 Libros por Leer",
+      "titulo": "Brownian Motion, Martingales, and Stochastic Calculus - Jean-François Le Gall",
+      "notas": "Recomendado en Shift 2026. Contexto / Por qué leerlo: base matemática avanzada de los modelos de precios (opcional, nivel técnico).",
+      "prioridad": "low",
+      "due": null
+    },
+    {
+      "lista": "📚 Libros por Leer",
+      "titulo": "Probability and Stochastics - Erhan Çınlar",
+      "notas": "Recomendado en Shift 2026. Contexto / Por qué leerlo: fundamentos de probabilidad para métodos cuantitativos (opcional, nivel técnico).",
+      "prioridad": "low",
+      "due": null
+    },
+    {
+      "lista": "📚 Libros por Leer",
+      "titulo": "Modeling and Analysis of Stochastic Systems - Vidyadhar G. Kulkarni",
+      "notas": "Recomendado en Shift 2026. Contexto / Por qué leerlo: modelado estocástico aplicado (opcional, nivel técnico).",
+      "prioridad": "low",
+      "due": null
+    },
+    {
+      "lista": "🎯 Tareas & Acciones",
+      "titulo": "Definir mi perfil: qué caída aguanto sin vender",
+      "notas": "Paso 1 del proceso de Hyenuk Chu. Próximo paso: escribir un número (p. ej. −15 %) y la edad/horizonte; de ahí sale la cartera (60/40, permanente, núcleo-satélite o Faber).",
+      "prioridad": "high",
+      "due": "2026-11-16"
+    },
+    {
+      "lista": "🎯 Tareas & Acciones",
+      "titulo": "Verificar mi fondo de emergencia de 6–12 meses",
+      "notas": "«El orden correcto para empezar», paso 01. Próximo paso: calcular mis gastos mensuales y moverlo a una cuenta remunerada o fondo monetario.",
+      "prioridad": "high",
+      "due": "2026-11-16"
+    },
+    {
+      "lista": "🎯 Tareas & Acciones",
+      "titulo": "Revisar si mis ETFs de EE. UU. deben pasar a UCITS (Irlanda)",
+      "notas": "Retención de dividendos 15 % vs 30 % y riesgo de sucesiones en EE. UU. por encima de 60.000 USD. Próximo paso: listar posiciones domiciliadas en EE. UU. y agendar una consulta con un contador local.",
+      "prioridad": "high",
+      "due": "2026-11-23"
+    },
+    {
+      "lista": "🎯 Tareas & Acciones",
+      "titulo": "Leer el paper de Faber y replicar la GTAA en Portfolio Visualizer",
+      "notas": "Tarea que te dejaste en las notas. Próximo paso: backtest de VTI/VXUS/BND/IYR/GSG al 20 % con la media móvil de 10 meses; comparar contra buy & hold con impuestos.",
+      "prioridad": "medium",
+      "due": "2026-11-23"
+    },
+    {
+      "lista": "🎯 Tareas & Acciones",
+      "titulo": "Hacer un X-ray de mi cartera actual",
+      "notas": "Validar región, sector, volatilidad, beta y correlaciones. Próximo paso: comprobar cuánto de mi renta variable está en EE. UU./tecnología (MSCI World ≈ 70 % EE. UU.) y definir satélites que corrijan.",
+      "prioridad": "medium",
+      "due": "2026-12-09"
+    },
+    {
+      "lista": "🎯 Tareas & Acciones",
+      "titulo": "Escribir mi regla de rebalanceo",
+      "notas": "«Hay que escribir la regla». Próximo paso: fijar la frecuencia (anual o último día hábil del mes) y las bandas de desvío, y anotarlas.",
+      "prioridad": "medium",
+      "due": "2026-12-09"
+    },
+    {
+      "lista": "🎯 Tareas & Acciones",
+      "titulo": "Montar mi primera mesa de trabajo con IA (40 min)",
+      "notas": "El tutorial de Mariel Lang: VS Code + GitHub + Claude Code + Pixel Agents. Próximo paso: crear un repo «sistemas-trading» con un CLAUDE.md que contenga las 8 fases y «no bajar el listón».",
+      "prioridad": "medium",
+      "due": "2026-11-16"
+    },
+    {
+      "lista": "🎯 Tareas & Acciones",
+      "titulo": "Escribir con números mi primera estrategia y hacerle backtest",
+      "notas": "Partir del RSI(2) de Connors o del Dual Momentum de Antonacci. Próximo paso: pasar cada frase subjetiva a una regla objetiva y revisar que el código no compre con datos del futuro.",
+      "prioridad": "medium",
+      "due": "2026-12-09"
+    },
+    {
+      "lista": "🎯 Tareas & Acciones",
+      "titulo": "Responder: qué decisión importante estoy postergando",
+      "notas": "El cierre de Jorge Iván Ocampo. Próximo paso: escribirla y pasarla por las tres anclas (claridad, criterio, responsabilidad), con fecha límite para decidir.",
+      "prioridad": "medium",
+      "due": "2026-11-16"
+    },
+    {
+      "lista": "🎯 Tareas & Acciones",
+      "titulo": "Evaluar mi portafolio de vida en 5 áreas",
+      "notas": "Ejercicio de Xavier Illingworth (dinero, salud, relaciones, tiempo, propósito). Próximo paso: puntuar cada una del 1 al 10 y elegir una acción para la más baja.",
+      "prioridad": "low",
+      "due": "2026-12-09"
+    },
+    {
+      "lista": "🎯 Tareas & Acciones",
+      "titulo": "Descargar el libro «Rediseña tu vida»",
+      "notas": "Gratis. Próximo paso: enviar «LIBRO» por DM a @mentalizadorx en Instagram.",
+      "prioridad": "low",
+      "due": "2026-11-16"
+    },
+    {
+      "lista": "🎯 Tareas & Acciones",
+      "titulo": "Investigar los ETP covered call (NVDI, TSLI, GLDI) antes de invertir",
+      "notas": "Charla de Luis Ángel Hernández. Próximo paso: leer el fact sheet y entender que el yield alto viene de vender la subida, no de ganancia libre.",
+      "prioridad": "low",
+      "due": "2027-02-07"
+    }
+  ]
+}

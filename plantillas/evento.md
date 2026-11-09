@@ -4,6 +4,11 @@
 
 ---
 
+## Resumen en 30 segundos
+[Idea central del evento en un párrafo.]
+
+---
+
 ## SECCIÓN 1: Resumen de Valor
 
 ### 📌 Ideas Clave / Key Takeaways
@@ -12,6 +17,20 @@
 
 ### 💡 Insights de Crecimiento Personal / Liderazgo
 - [Reflexión, cambio de mentalidad o hábito].
+
+---
+
+## Repaso por charla
+### 1. [Ponente]: «[Título de la charla]»
+- [Concepto / marco / cifra / frase clave]
+
+## 📊 Datos clave y cifras para recordar
+| Dato | Valor |
+|---|---|
+| [Dato] | [Valor] |
+
+## 🔗 Links, herramientas y contactos
+- **[Recurso]:** [URL o cómo encontrarlo]
 
 ---
 
