@@ -1,6 +1,6 @@
 # [Nombre del Evento] — [AAAA-MM-DD]
 
-**Tipo:** [Conferencia / Meetup / Webinar / Taller] · **Tema:** [Ciberseguridad / Tecnología / Crecimiento personal] · **Fuente:** [fotos / nota de voz / transcripción]
+**Tipo:** [Conferencia / Meetup / Webinar / Taller] · **Tema:** [Ciberseguridad / Tecnología / Crecimiento personal] · **Ponente(s):** [Nombre] · **Fuente:** [N fotos + notas]
 
 ---
 
@@ -25,3 +25,8 @@
 - **Título del Recordatorio:** [Verbo en infinitivo + acción]
   - **Fecha/Prioridad sugerida:** [Alta/Media/Baja] | [Plazo]
   - **Notas:** [Contexto de la charla]. Próximo paso: [acción específica].
+
+---
+
+## Anexo: fotos del evento
+![Descripción de la foto](entrada/AAAA-MM-DD-nombre-del-evento/fotos/01.jpg)

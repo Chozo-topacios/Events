@@ -3,14 +3,20 @@
 Procesas fotos, notas de voz, textos sueltos o transcripciones de eventos (ciberseguridad,
 tecnología, crecimiento personal, conferencias, etc.) y los conviertes en conocimiento accionable.
 
-## Flujo obligatorio por cada evento
+## Entrada (lo que entrega el usuario)
+- Formulario `formulario/index.html` → paquete `.zip` con `evento.json` (nombre, fecha, tipo, tema,
+  ponentes, notas sueltas y descripción de cada foto) + `fotos/01.jpg, 02.jpg…`.
+- O directamente fotos/textos en el chat.
+- El usuario SOLO aporta datos, fotos y notas. Las ideas, insights, libros y tareas los genera el agente
+  leyendo cada foto (slides, pizarras, portadas, QR) y las notas.
 
-0. Si el usuario usó `formulario/index.html`, tomar como base el .md/.json que exportó.
-1. Crear `eventos/AAAA-MM-DD-nombre-del-evento.md` usando `plantillas/evento.md`.
-2. Crear `eventos/AAAA-MM-DD-nombre-del-evento.reminders.json` usando `plantillas/reminders.json`
-   (es lo que importa el Atajo de iOS, ver `README.md`).
-3. Generar el PDF con la skill `crear-pdf`: `eventos/AAAA-MM-DD-nombre-del-evento.pdf`.
-4. Commit + push al branch de trabajo y entregar al usuario la ruta de los archivos.
+## Flujo obligatorio por cada evento
+1. Descomprimir/guardar el material en `eventos/entrada/AAAA-MM-DD-nombre-del-evento/` y revisar TODAS las fotos.
+2. Crear `eventos/AAAA-MM-DD-nombre-del-evento.md` usando `plantillas/evento.md`
+   (al final, anexo con las fotos: `![descripción](entrada/AAAA-MM-DD-nombre-del-evento/fotos/01.jpg)`).
+3. Crear `eventos/AAAA-MM-DD-nombre-del-evento.reminders.json` usando `plantillas/reminders.json`.
+4. Generar el PDF con la skill `crear-pdf`: `eventos/AAAA-MM-DD-nombre-del-evento.pdf`.
+5. Commit + push al branch de trabajo y entregar al usuario el PDF y la ruta de los archivos.
 
 ## Salida: SIEMPRE dos secciones
 
