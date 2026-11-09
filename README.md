@@ -3,9 +3,28 @@
 Repositorio donde el agente (ver `CLAUDE.md`) guarda el resumen de cada evento y su exportación a Apple Reminders.
 
 ```
-eventos/      → un .md (resumen) + un .reminders.json (importación) por evento
-plantillas/   → formato base de ambos archivos
+formulario/index.html          → formulario para cargar el material del evento (funciona sin internet)
+entregables/formulario-evento.pdf → versión en blanco para imprimir y llenar a mano
+eventos/                       → un .md (resumen) + un .reminders.json (importación) por evento
+plantillas/                    → formato base de ambos archivos
+.claude/skills/crear-pdf/      → skill reutilizable para generar PDFs (ver abajo)
 ```
+
+## Formulario
+Abre `formulario/index.html` en el navegador (computador o iPhone desde la app Archivos).
+- Carga fotos de slides (quedan dentro del PDF), archivos .txt/.md con transcripciones y audios (quedan listados para enviarlos al agente).
+- Completa las ideas clave, los insights, los libros y las tareas. El avance se guarda automáticamente en el navegador.
+- **Generar PDF** abre la ventana de impresión: elige "Guardar como PDF".
+- **Descargar resumen (.md)** y **Descargar Recordatorios (.json)** generan los archivos para `eventos/` y para el Atajo de iOS.
+- Para la hoja en blanco imprimible, abre `formulario/index.html?en-blanco` o usa `entregables/formulario-evento.pdf`.
+
+## Skill `crear-pdf` (para todos los proyectos)
+```bash
+python3 .claude/skills/crear-pdf/scripts/crear_pdf.py archivo.md -o entregables/archivo.pdf
+python3 .claude/skills/crear-pdf/scripts/crear_pdf.py formulario/index.html --query en-blanco -o entregables/formulario-evento.pdf
+```
+Para usarla en otros repositorios, copia `.claude/skills/crear-pdf/` a la raíz de cada uno,
+o a `~/.claude/skills/crear-pdf/` en tu equipo para que esté disponible en todos tus proyectos.
 
 ## Cómo usarlo
 1. Envía al agente fotos, nota de voz transcrita, texto o transcripción del evento (indica nombre y fecha).

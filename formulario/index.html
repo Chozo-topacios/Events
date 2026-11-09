@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Registro de Evento</title>
+<style>
+  :root { --tinta:#1d2433; --suave:#5b6474; --acento:#2457d6; --linea:#d5dae3; --fondo:#f5f7fb; --papel:#fff; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --tinta:#e6e9ef; --suave:#9aa3b2; --acento:#7aa2ff; --linea:#343b48; --fondo:#1b2029; --papel:#12161d; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--fondo); color:var(--tinta);
+         font:15px/1.5 -apple-system,"Segoe UI","Helvetica Neue",Arial,"Noto Color Emoji",sans-serif; }
+  main { max-width: 860px; margin: 0 auto; padding: 24px 16px 80px; }
+  header h1 { margin:0; font-size:26px; letter-spacing:-.01em; }
+  header p { margin:4px 0 0; color:var(--suave); }
+  section { background:var(--papel); border:1px solid var(--linea); border-radius:12px; padding:18px; margin-top:16px; break-inside:avoid; }
+  section > h2 { margin:0 0 4px; font-size:17px; color:var(--acento); }
+  .ayuda { margin:0 0 12px; color:var(--suave); font-size:13px; }
+  label { display:block; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.04em; color:var(--suave); margin:10px 0 4px; }
+  input, select, textarea { width:100%; font:inherit; color:var(--tinta); background:var(--papel);
+         border:1px solid var(--linea); border-radius:8px; padding:9px 10px; }
+  textarea { resize:vertical; min-height:70px; overflow:hidden; }
+  input:focus, select:focus, textarea:focus { outline:2px solid var(--acento); outline-offset:-1px; border-color:transparent; }
+  .grid { display:grid; gap:0 14px; grid-template-columns: 1fr 1fr; }
+  .grid .ancho { grid-column: 1 / -1; }
+  @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+  .fila { border:1px dashed var(--linea); border-radius:10px; padding:4px 12px 12px; margin-bottom:10px; position:relative; }
+  .fila .quitar { position:absolute; top:8px; right:8px; }
+  .num { font-weight:700; color:var(--acento); font-size:13px; margin-top:8px; }
+  button { font:inherit; font-size:14px; border-radius:8px; padding:9px 14px; cursor:pointer;
+           border:1px solid var(--linea); background:var(--papel); color:var(--tinta); }
+  button.primario { background:var(--acento); border-color:var(--acento); color:#fff; font-weight:600; }
+  button.quitar { padding:2px 9px; font-size:13px; color:var(--suave); }
+  .acciones { display:flex; flex-wrap:wrap; gap:8px; margin-top:20px; }
+  .soltar { border:2px dashed var(--linea); border-radius:10px; padding:20px; text-align:center; color:var(--suave); cursor:pointer; }
+  .soltar.activo { border-color:var(--acento); color:var(--acento); }
+  .fotos { display:grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap:10px; margin-top:12px; }
+  .fotos figure { margin:0; position:relative; }
+  .fotos img { width:100%; border-radius:8px; border:1px solid var(--linea); display:block; }
+  .fotos figcaption { font-size:11px; color:var(--suave); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .fotos .quitar { position:absolute; top:4px; right:4px; background:var(--papel); }
+  .otros { margin:10px 0 0; padding-left:18px; font-size:13px; color:var(--suave); }
+  .aviso { font-size:13px; color:var(--suave); min-height:1.2em; margin-top:8px; }
+  .solo-impresion { display:none; }
+
+  @media print {
+    @page { size: A4; margin: 14mm; }
+    :root { --tinta:#1d2433; --suave:#5b6474; --acento:#2457d6; --linea:#c9cfda; --fondo:#fff; --papel:#fff; }
+    html { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    body { background:#fff; font-size:11pt; }
+    main { padding:0; max-width:none; }
+    .no-imprimir, .quitar, .ayuda, .soltar { display:none !important; }
+    .solo-impresion { display:block; }
+    section { border:0; border-top:2px solid var(--acento); border-radius:0; padding:8px 0 4px; margin-top:12px; break-inside:auto; }
+    section > h2 { break-after:avoid; }
+    input, select, textarea { border:0; border-bottom:1px solid var(--linea); border-radius:0; padding:3px 2px; }
+    select { appearance:none; -webkit-appearance:none; }
+    textarea { resize:none; }
+    .fila { border:0; border-bottom:1px dotted var(--linea); border-radius:0; padding:0 0 8px; break-inside:avoid; }
+    .en-blanco textarea { min-height:52px; }
+    .en-blanco #notas { min-height:300px !important; }
+    .fotos { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>📝 Registro de Evento</h1>
+    <p>Carga el material del evento y genera el PDF, el resumen (.md) y la exportación a Apple Reminders (.json).</p>
+  </header>
+
+  <section>
+    <h2>1. Datos del evento</h2>
+    <div class="grid">
+      <div class="ancho"><label for="evento">Nombre del evento</label><input id="evento" data-campo placeholder="Ej. Ekoparty 2026 — Keynote de apertura"></div>
+      <div><label for="fecha">Fecha</label><input id="fecha" type="date" data-campo></div>
+      <div><label for="tipo">Tipo</label>
+        <select id="tipo" data-campo><option></option><option>Conferencia</option><option>Meetup</option><option>Webinar</option><option>Taller</option><option>Charla / Keynote</option><option>Podcast / Video</option><option>Otro</option></select></div>
+      <div><label for="tema">Tema</label>
+        <select id="tema" data-campo><option></option><option>Ciberseguridad</option><option>Tecnología</option><option>Crecimiento personal</option><option>Liderazgo</option><option>Negocios</option><option>Otro</option></select></div>
+      <div><label for="ponentes">Ponente(s)</label><input id="ponentes" data-campo placeholder="Nombre, cargo, empresa"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. Material crudo</h2>
+    <p class="ayuda">Fotos de slides o pizarras (se incluyen en el PDF), archivos .txt/.md con transcripciones o notas (se agregan al cuadro de notas). Las notas de voz no se transcriben aquí: envíalas al agente.</p>
+    <div class="soltar no-imprimir" id="soltar" tabindex="0">Arrastra archivos aquí o <u>toca para seleccionar</u>
+      <input id="archivos" type="file" multiple accept="image/*,audio/*,.txt,.md,.vtt,.srt,text/plain" hidden></div>
+    <div class="fotos" id="fotos"></div>
+    <ul class="otros" id="otros"></ul>
+    <label for="notas">Notas sueltas / transcripción</label>
+    <textarea id="notas" data-campo style="min-height:140px" placeholder="Pega aquí tus apuntes, frases textuales, links, nombres mencionados…"></textarea>
+  </section>
+
+  <section>
+    <h2>📌 3. Ideas clave / Key Takeaways</h2>
+    <p class="ayuda">De 3 a 5 conceptos, en lenguaje directo y ejecutivo.</p>
+    <div id="ideas"></div>
+    <button class="no-imprimir" data-agregar="ideas">+ Agregar idea</button>
+  </section>
+
+  <section>
+    <h2>💡 4. Insights de crecimiento personal / liderazgo</h2>
+    <p class="ayuda">Reflexiones, cambios de mentalidad o hábitos sugeridos.</p>
+    <div id="insights"></div>
+    <button class="no-imprimir" data-agregar="insights">+ Agregar insight</button>
+  </section>
+
+  <section>
+    <h2>📚 5. Libros por leer</h2>
+    <div id="libros"></div>
+    <button class="no-imprimir" data-agregar="libros">+ Agregar libro</button>
+  </section>
+
+  <section>
+    <h2>🎯 6. Tareas &amp; acciones</h2>
+    <p class="ayuda">Inicia cada acción con un verbo en infinitivo (Revisar, Implementar, Agendar…).</p>
+    <div id="tareas"></div>
+    <button class="no-imprimir" data-agregar="tareas">+ Agregar tarea</button>
+  </section>
+
+  <div class="acciones no-imprimir">
+    <button class="primario" id="btnPdf">Generar PDF</button>
+    <button id="btnMd">Descargar resumen (.md)</button>
+    <button id="btnJson">Descargar Recordatorios (.json)</button>
+    <button id="btnLimpiar">Limpiar formulario</button>
+  </div>
+  <p class="aviso no-imprimir" id="aviso"></p>
+</main>
+
+<template id="t-ideas"><div class="fila"><button class="quitar" title="Quitar">✕</button>
+  <div class="num"></div><label>Concepto</label><input data-k="titulo" placeholder="Ej. Zero Trust no es un producto">
+  <label>Explicación</label><textarea data-k="detalle" placeholder="1-2 líneas"></textarea></div></template>
+<template id="t-insights"><div class="fila"><button class="quitar" title="Quitar">✕</button>
+  <div class="num"></div><textarea data-k="texto" placeholder="Reflexión, cambio de mentalidad o hábito"></textarea></div></template>
+<template id="t-libros"><div class="fila"><button class="quitar" title="Quitar">✕</button>
+  <div class="grid"><div><label>Título</label><input data-k="titulo"></div><div><label>Autor</label><input data-k="autor"></div>
+  <div class="ancho"><label>Por qué leerlo (1 frase)</label><input data-k="porque"></div></div></div></template>
+<template id="t-tareas"><div class="fila"><button class="quitar" title="Quitar">✕</button>
+  <div class="grid"><div class="ancho"><label>Acción (verbo en infinitivo)</label><input data-k="accion" placeholder="Ej. Auditar los accesos privilegiados en AWS"></div>
+  <div><label>Prioridad</label><select data-k="prioridad"><option>Alta</option><option selected>Media</option><option>Baja</option></select></div>
+  <div><label>Plazo</label><select data-k="plazo"><option>Esta semana</option><option>Próximas 2 semanas</option><option selected>Próximo mes</option><option>Este trimestre</option></select></div>
+  <div class="ancho"><label>Contexto de la charla</label><input data-k="contexto"></div>
+  <div class="ancho"><label>Próximo paso específico</label><input data-k="paso"></div></div></div></template>
+
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const CLAVE = "registro-evento-borrador";
+  const EN_BLANCO = new URLSearchParams(location.search).has("en-blanco");  // versión para imprimir y llenar a mano
+  const MINIMO = EN_BLANCO ? { ideas: 5, insights: 3, libros: 3, tareas: 4 } : { ideas: 3, insights: 2, libros: 2, tareas: 3 };
+  const PRIORIDAD = { Alta: "high", Media: "medium", Baja: "low" };
+  const DIAS = { "Esta semana": 7, "Próximas 2 semanas": 14, "Próximo mes": 30, "Este trimestre": 90 };
+  let fotos = [];   // {nombre, dataUrl}
+  let otros = [];   // nombres de archivos no-imagen (audio, etc.)
+
+  const crecer = t => { t.style.height = "auto"; t.style.height = t.scrollHeight + 2 + "px"; };
+  const avisar = m => { $("#aviso").textContent = m; };
+
+  function renumerar(lista) {
+    lista.querySelectorAll(".fila .num").forEach((n, i) => n.textContent = "#" + (i + 1));
+  }
+  function agregarFila(tipo, datos = {}) {
+    const lista = $("#" + tipo);
+    const fila = $("#t-" + tipo).content.firstElementChild.cloneNode(true);
+    fila.querySelectorAll("[data-k]").forEach(el => { if (datos[el.dataset.k] != null) el.value = datos[el.dataset.k]; });
+    fila.querySelector(".quitar").onclick = () => { fila.remove(); renumerar(lista); guardar(); };
+    lista.appendChild(fila);
+    renumerar(lista);
+    fila.querySelectorAll("textarea").forEach(crecer);
+    return fila;
+  }
+  const filas = tipo => [...$("#" + tipo).children].map(f => {
+    const o = {}; f.querySelectorAll("[data-k]").forEach(el => o[el.dataset.k] = el.value.trim()); return o;
+  });
+  const unir = (...partes) => partes.filter(Boolean).join(" ");
+  const llena = o => Object.entries(o).some(([k, v]) => v && !["prioridad", "plazo"].includes(k));
+
+  function datos() {
+    const d = {}; document.querySelectorAll("[data-campo]").forEach(el => d[el.id] = el.value.trim());
+    for (const t of Object.keys(MINIMO)) d[t] = filas(t);
+    d.fotos = fotos; d.otros = otros;
+    return d;
+  }
+  function guardar() {
+    if (EN_BLANCO) return;
+    try { localStorage.setItem(CLAVE, JSON.stringify(datos())); }
+    catch { avisar("No se pudo guardar el borrador (¿fotos muy pesadas?). Lo demás sigue funcionando."); }
+  }
+  function cargar() {
+    let d = null;
+    if (!EN_BLANCO) try { d = JSON.parse(localStorage.getItem(CLAVE) || "null"); } catch {}
+    if (d) document.querySelectorAll("[data-campo]").forEach(el => { if (d[el.id] != null) el.value = d[el.id]; });
+    for (const t of Object.keys(MINIMO)) {
+      const previas = (d && d[t]) || [];
+      previas.forEach(x => agregarFila(t, x));
+      for (let i = previas.length; i < MINIMO[t]; i++) agregarFila(t);
+    }
+    fotos = (d && d.fotos) || []; otros = (d && d.otros) || [];
+    if (!EN_BLANCO && !$("#fecha").value) $("#fecha").value = new Date().toISOString().slice(0, 10);
+    pintarArchivos();
+    document.querySelectorAll("textarea").forEach(crecer);
+  }
+
+  // --- Archivos ---
+  function pintarArchivos() {
+    $("#fotos").innerHTML = "";
+    fotos.forEach((f, i) => {
+      const fig = document.createElement("figure");
+      fig.innerHTML = `<img alt=""><figcaption></figcaption><button class="quitar" title="Quitar">✕</button>`;
+      fig.querySelector("img").src = f.dataUrl;
+      fig.querySelector("figcaption").textContent = f.nombre;
+      fig.querySelector("button").onclick = () => { fotos.splice(i, 1); pintarArchivos(); guardar(); };
+      $("#fotos").appendChild(fig);
+    });
+    $("#otros").innerHTML = "";
+    otros.forEach(n => { const li = document.createElement("li"); li.textContent = "🎙️ " + n + " (enviar al agente para transcribir)"; $("#otros").appendChild(li); });
+  }
+  function reducirImagen(archivo) {   // max 1600px, JPEG 0.82 → PDF liviano
+    return new Promise((ok, mal) => {
+      const img = new Image(), url = URL.createObjectURL(archivo);
+      img.onload = () => {
+        const k = Math.min(1, 1600 / Math.max(img.width, img.height));
+        const c = document.createElement("canvas"); c.width = img.width * k; c.height = img.height * k;
+        c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+        URL.revokeObjectURL(url); ok(c.toDataURL("image/jpeg", 0.82));
+      };
+      img.onerror = mal; img.src = url;
+    });
+  }
+  async function recibir(lista) {
+    for (const a of lista) {
+      try {
+        if (a.type.startsWith("image/")) fotos.push({ nombre: a.name, dataUrl: await reducirImagen(a) });
+        else if (a.type.startsWith("audio/")) otros.push(a.name);
+        else {
+          const txt = await a.text(), n = $("#notas");
+          n.value = (n.value ? n.value + "\n\n" : "") + `--- ${a.name} ---\n` + txt; crecer(n);
+        }
+      } catch { avisar("No se pudo leer " + a.name); }
+    }
+    pintarArchivos(); guardar();
+  }
+  const zona = $("#soltar"), input = $("#archivos");
+  zona.onclick = () => input.click();
+  zona.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); input.click(); } };
+  input.onchange = () => { recibir([...input.files]); input.value = ""; };
+  zona.ondragover = e => { e.preventDefault(); zona.classList.add("activo"); };
+  zona.ondragleave = () => zona.classList.remove("activo");
+  zona.ondrop = e => { e.preventDefault(); zona.classList.remove("activo"); recibir([...e.dataTransfer.files]); };
+
+  // --- Exportaciones ---
+  const slug = s => (s || "evento").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60) || "evento";
+  const base = d => `${d.fecha || "sin-fecha"}-${slug(d.evento)}`;
+  function sumarDias(fecha, n) {
+    const f = fecha ? new Date(fecha + "T12:00:00") : new Date(); f.setDate(f.getDate() + n); return f.toISOString().slice(0, 10);
+  }
+  function descargar(nombre, contenido, tipo) {
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([contenido], { type: tipo })); a.download = nombre;
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  }
+  const notaLibro = (ev, x) => unir(`Recomendado en ${ev}.`, x.porque && `Contexto / Por qué leerlo: ${x.porque}`);
+  const notaTarea = x => unir(x.contexto && `Contexto: ${x.contexto.replace(/\.?$/, ".")}`, x.paso && `Próximo paso: ${x.paso}`);
+  function aMarkdown(d) {
+    const ev = d.evento || "[Evento]";
+    const ideas = d.ideas.filter(llena), ins = d.insights.filter(llena), lib = d.libros.filter(llena), tar = d.tareas.filter(llena);
+    let m = `# ${ev} — ${d.fecha}\n\n**Tipo:** ${d.tipo || "-"} · **Tema:** ${d.tema || "-"} · **Ponente(s):** ${d.ponentes || "-"}\n\n---\n\n## SECCIÓN 1: Resumen de Valor\n\n### 📌 Ideas Clave / Key Takeaways\n`;
+    m += ideas.length ? ideas.map((x, i) => `${i + 1}. ${x.titulo ? `**${x.titulo}:** ` : ""}${x.detalle}`).join("\n") : "_Pendiente_";
+    m += `\n\n### 💡 Insights de Crecimiento Personal / Liderazgo\n`;
+    m += ins.length ? ins.map(x => `- ${x.texto}`).join("\n") : "_Pendiente_";
+    m += `\n\n---\n\n## SECCIÓN 2: Formato Recordatorios de iOS (Apple Reminders)\n\n### Lista: "📚 Libros por Leer"\n`;
+    m += lib.length ? lib.map(x => `- **Título del Recordatorio:** ${x.titulo} - ${x.autor}\n  - **Notas:** ${notaLibro(ev, x)}`).join("\n") : "- Sin libros recomendados";
+    m += `\n\n### Lista: "🎯 Tareas & Acciones"\n`;
+    m += tar.length ? tar.map(x => `- **Título del Recordatorio:** ${x.accion}\n  - **Fecha/Prioridad sugerida:** ${x.prioridad} | ${x.plazo}\n  - **Notas:** ${notaTarea(x)}`).join("\n") : "_Pendiente_";
+    if (d.notas || d.otros.length || d.fotos.length) {
+      m += `\n\n---\n\n## Anexo: material crudo\n`;
+      if (d.fotos.length) m += `\n- Fotos adjuntas: ${d.fotos.map(f => f.nombre).join(", ")}`;
+      if (d.otros.length) m += `\n- Audios por transcribir: ${d.otros.join(", ")}`;
+      if (d.notas) m += `\n\n\`\`\`text\n${d.notas}\n\`\`\``;
+    }
+    return m + "\n";
+  }
+  function aRecordatorios(d) {
+    const ev = d.evento || "Evento";
+    const r = [
+      ...d.libros.filter(llena).map(x => ({ lista: "📚 Libros por Leer", titulo: `${x.titulo} - ${x.autor}`,
+        notas: notaLibro(ev, x), prioridad: "low", due: null })),
+      ...d.tareas.filter(llena).map(x => ({ lista: "🎯 Tareas & Acciones", titulo: x.accion,
+        notas: notaTarea(x), prioridad: PRIORIDAD[x.prioridad] || "medium",
+        due: sumarDias(d.fecha, DIAS[x.plazo] || 30) })),
+    ];
+    return JSON.stringify({ evento: ev, fecha: d.fecha, recordatorios: r }, null, 2) + "\n";
+  }
+
+  $("#btnPdf").onclick = () => {
+    const d = datos(), t = document.title;
+    document.title = base(d);          // nombre sugerido del PDF
+    document.querySelectorAll("textarea").forEach(crecer);
+    window.print();
+    document.title = t;
+  };
+  $("#btnMd").onclick = () => { const d = datos(); descargar(base(d) + ".md", aMarkdown(d), "text/markdown"); };
+  $("#btnJson").onclick = () => { const d = datos(); descargar(base(d) + ".reminders.json", aRecordatorios(d), "application/json"); };
+  $("#btnLimpiar").onclick = () => {
+    if (!confirm("¿Borrar todo el contenido del formulario?")) return;
+    try { localStorage.removeItem(CLAVE); } catch {}
+    document.querySelectorAll("[data-campo]").forEach(el => el.value = "");
+    for (const t of Object.keys(MINIMO)) $("#" + t).innerHTML = "";
+    fotos = []; otros = []; cargar(); avisar("Formulario limpio.");
+  };
+  document.querySelectorAll("[data-agregar]").forEach(b => b.onclick = () => { agregarFila(b.dataset.agregar).querySelector("input,textarea").focus(); guardar(); });
+  document.addEventListener("input", e => { if (e.target.tagName === "TEXTAREA") crecer(e.target); guardar(); });
+  document.addEventListener("change", guardar);
+  window.addEventListener("beforeprint", () => document.querySelectorAll("textarea").forEach(crecer));
+  cargar();
+  if (EN_BLANCO) {   // hoja limpia para llenar a mano: sin ejemplos ni valores preseleccionados
+    document.body.classList.add("en-blanco");
+    document.querySelectorAll("[placeholder]").forEach(el => el.placeholder = "");
+    $("#fecha").type = "text";
+    document.querySelectorAll("select").forEach(sel => {
+      const pistas = [...sel.options].map(o => o.text).filter(Boolean).join(" / ");
+      sel.insertAdjacentHTML("afterbegin", `<option selected></option>`);
+      if (sel.dataset.k) sel.closest("div").querySelector("label").textContent += ` (${pistas})`;
+    });
+  }
+})();
+</script>
+</body>
+</html>

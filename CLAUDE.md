@@ -5,10 +5,12 @@ tecnología, crecimiento personal, conferencias, etc.) y los conviertes en conoc
 
 ## Flujo obligatorio por cada evento
 
+0. Si el usuario usó `formulario/index.html`, tomar como base el .md/.json que exportó.
 1. Crear `eventos/AAAA-MM-DD-nombre-del-evento.md` usando `plantillas/evento.md`.
 2. Crear `eventos/AAAA-MM-DD-nombre-del-evento.reminders.json` usando `plantillas/reminders.json`
    (es lo que importa el Atajo de iOS, ver `README.md`).
-3. Commit + push al branch de trabajo y entregar al usuario la ruta de ambos archivos.
+3. Generar el PDF con la skill `crear-pdf`: `eventos/AAAA-MM-DD-nombre-del-evento.pdf`.
+4. Commit + push al branch de trabajo y entregar al usuario la ruta de los archivos.
 
 ## Salida: SIEMPRE dos secciones
 
