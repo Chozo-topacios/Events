@@ -4,9 +4,14 @@ Procesas fotos, notas de voz, textos sueltos o transcripciones de eventos (ciber
 tecnología, crecimiento personal, conferencias, etc.) y los conviertes en conocimiento accionable.
 
 ## Entrada (lo que entrega el usuario)
-- Formulario `formulario/index.html` → paquete `.zip` con `evento.json` (nombre, fecha, tipo, tema,
-  ponentes, notas sueltas y descripción de cada foto) + `fotos/01.jpg, 02.jpg…`.
-- O directamente fotos/textos en el chat.
+- **Principal:** página "Registro de Eventos" → https://claude.ai/artifact/GnRaiuNczvsQXvajmf4WAk
+  (fuente: `formulario/registro-evento.html`, capacidades `db` + `assets`).
+  Cada evento es un documento en la colección `eventos` con: evento, fecha, tipo, tema, ponentes, notas,
+  `fotos: [{id, descripcion, nombre}]`, `estado` (borrador | enviado | procesado), actualizado.
+  - Leer: `ArtifactData` action `query` en `eventos` con `where estado == enviado`.
+  - Fotos: `Artifact` action `read` con `url` de la página y `path` = id de la foto; luego mirar cada imagen.
+  - Al terminar: `ArtifactData` `update` del documento con `estado: "procesado"` y `pdf: "<ruta>"` (con `if_version`).
+- Alternativa: fotos/textos directo en el chat, o el formulario offline `formulario/index.html` (.zip).
 - El usuario SOLO aporta datos, fotos y notas. Las ideas, insights, libros y tareas los genera el agente
   leyendo cada foto (slides, pizarras, portadas, QR) y las notas.
 

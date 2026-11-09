@@ -1,0 +1,336 @@
+<title>Registro de Eventos</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+  /* Layout: una columna de captura tipo "libreta de campo"; arriba el evento, luego fotos, notas y envío; abajo el historial. */
+  :root {
+    --bg: #f3f5f8; --surface: #ffffff; --fg: #18202e; --muted: #5d6779; --line: #d9dee7;
+    --accent: #1f5fd1; --accent-fg: #ffffff; --ok: #1b7a4a; --warn: #a3600b; --danger: #b3261e;
+    --display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    --body: "Inter", -apple-system, "Segoe UI", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+    --bg: #0f141c; --surface: #171e29; --fg: #e7ebf2; --muted: #9aa4b5; --line: #2a3342;
+    --accent: #6f9cff; --accent-fg: #0b1220; --ok: #5fcf96; --warn: #f0b55a; --danger: #ff8a80; color-scheme: dark; } }
+  :root[data-theme="dark"] {
+    --bg: #0f141c; --surface: #171e29; --fg: #e7ebf2; --muted: #9aa4b5; --line: #2a3342;
+    --accent: #6f9cff; --accent-fg: #0b1220; --ok: #5fcf96; --warn: #f0b55a; --danger: #ff8a80; color-scheme: dark; }
+
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--fg); font: 15px/1.5 var(--body);
+         padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  main { max-width: 720px; margin: 0 auto; padding-block: 24px 64px; display: grid; gap: 16px; }
+  h1, h2 { font-family: var(--display); text-wrap: balance; margin: 0; }
+  h1 { font-size: 28px; letter-spacing: -.01em; }
+  h2 { font-size: 18px; }
+  .lead { color: var(--muted); margin: 4px 0 0; max-width: 60ch; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: grid; gap: 12px; }
+  .card > header { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+  .hint { color: var(--muted); font-size: 13px; margin: 0; }
+  .grid { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; }
+  .grid .full { grid-column: 1 / -1; }
+  @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
+  .field { display: grid; gap: 4px; min-width: 0; }
+  label, .label { font-size: 12px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+  input, select, textarea { width: 100%; font: inherit; color: var(--fg); background: var(--bg);
+    border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+  textarea { min-height: 150px; resize: vertical; }
+  input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, .pick:focus-within {
+    outline: 2px solid var(--accent); outline-offset: 1px; }
+
+  button, .pick { font: 600 14px var(--body); border-radius: 10px; padding: 11px 16px; cursor: pointer;
+    border: 1px solid var(--line); background: var(--surface); color: var(--fg); display: inline-flex; align-items: center; gap: 8px; }
+  button.primary, .pick.primary { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+  button:disabled { opacity: .55; cursor: default; }
+  .pick input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+  .pick { position: relative; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+  .photos { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+  .photo { display: grid; gap: 6px; position: relative; min-width: 0; }
+  .photo img, .photo .ph { width: 100%; max-width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 10px;
+    border: 1px solid var(--line); background: var(--bg); display: block; }
+  .photo .ph { display: grid; place-items: center; color: var(--muted); font-size: 13px; }
+  .photo input { padding: 6px 8px; font-size: 13px; }
+  .photo .x { position: absolute; top: 6px; right: 6px; padding: 4px 9px; font-size: 13px; background: var(--surface); }
+  .empty { border: 1.5px dashed var(--line); border-radius: 10px; padding: 18px; text-align: center; color: var(--muted); font-size: 14px; }
+  .drop.over { border-color: var(--accent); color: var(--accent); }
+
+  .status { font-size: 13px; color: var(--muted); min-height: 1.4em; margin: 0; }
+  .status.err { color: var(--danger); }
+  .status.ok { color: var(--ok); }
+  .chip { font-size: 12px; font-weight: 600; border-radius: 999px; padding: 2px 10px; border: 1px solid currentColor; white-space: nowrap; }
+  .chip.borrador { color: var(--muted); } .chip.enviado { color: var(--warn); } .chip.procesado { color: var(--ok); }
+  .confirm { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 14px; }
+
+  .list { display: grid; gap: 0; }
+  .item { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); }
+  .item:first-child { border-top: 0; }
+  .item b { display: block; overflow-wrap: anywhere; }
+  .item small { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .item .acts { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+  .item button { padding: 6px 10px; font-size: 13px; }
+  .steps { margin: 0; padding-left: 20px; color: var(--muted); font-size: 14px; display: grid; gap: 2px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<main>
+  <div>
+    <h1>Registro de eventos</h1>
+    <p class="lead">Carga los datos, las fotos y tus notas. Con eso el agente arma las ideas clave, los insights, los libros y las tareas, y te entrega el PDF.</p>
+  </div>
+
+  <p class="status err" id="noStore" hidden>No se pudo conectar el almacenamiento. Abre esta página desde tu cuenta de claude.ai (app o navegador) para que las fotos se guarden.</p>
+
+  <section class="card" aria-labelledby="h-datos">
+    <header><h2 id="h-datos">1. Datos del evento</h2><span class="chip borrador" id="estadoChip">Borrador</span></header>
+    <div class="grid">
+      <div class="field full"><label for="evento">Nombre del evento</label><input id="evento" autocomplete="off" placeholder="Ej. Ekoparty 2026, keynote de apertura"></div>
+      <div class="field"><label for="fecha">Fecha</label><input id="fecha" type="date"></div>
+      <div class="field"><label for="tipo">Tipo</label>
+        <select id="tipo"><option value=""></option><option>Conferencia</option><option>Meetup</option><option>Webinar</option><option>Taller</option><option>Charla / Keynote</option><option>Podcast / Video</option><option>Otro</option></select></div>
+      <div class="field"><label for="tema">Tema</label>
+        <select id="tema"><option value=""></option><option>Ciberseguridad</option><option>Tecnología</option><option>Crecimiento personal</option><option>Liderazgo</option><option>Negocios</option><option>Otro</option></select></div>
+      <div class="field"><label for="ponentes">Ponente(s)</label><input id="ponentes" autocomplete="off" placeholder="Nombre, cargo, empresa"></div>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="h-fotos">
+    <header><h2 id="h-fotos">2. Fotos</h2><span class="hint" id="contador"></span></header>
+    <p class="hint">Slides, pizarras, portadas de libros, códigos QR o apuntes en papel. Cada foto se guarda en cuanto la agregas.</p>
+    <div class="row">
+      <label class="pick primary" id="pickCam">Tomar foto<input id="inCam" type="file" accept="image/*" capture="environment"></label>
+      <label class="pick" id="pickGal">Elegir de la galería<input id="inGal" type="file" accept="image/*" multiple></label>
+    </div>
+    <div class="photos" id="fotos"></div>
+    <div class="empty drop" id="drop">Todavía no hay fotos. Agrégalas con los botones de arriba o arrástralas aquí.</div>
+  </section>
+
+  <section class="card" aria-labelledby="h-notas">
+    <header><h2 id="h-notas">3. Notas sueltas</h2><span class="hint">Opcional</span></header>
+    <textarea id="notas" placeholder="Frases textuales, links, nombres, libros mencionados, lo que no salga en las fotos."></textarea>
+  </section>
+
+  <section class="card" aria-labelledby="h-enviar">
+    <h2 id="h-enviar">Enviar al agente</h2>
+    <ol class="steps">
+      <li>Toca "Enviar al agente".</li>
+      <li>En el chat con Claude escribe: "procesa el evento".</li>
+      <li>Recibes ideas clave, insights, libros, tareas para Recordatorios y el PDF.</li>
+    </ol>
+    <div class="row">
+      <button class="primary" id="btnEnviar" type="button">Enviar al agente</button>
+      <button id="btnNuevo" type="button">Empezar otro evento</button>
+    </div>
+    <div class="confirm" id="confirmNuevo" hidden>
+      <span>¿Dejar este evento como está y empezar uno nuevo?</span>
+      <button id="siNuevo" type="button">Sí, empezar otro</button>
+      <button id="noNuevo" type="button">Cancelar</button>
+    </div>
+    <p class="status" id="status" role="status"></p>
+  </section>
+
+  <section class="card" aria-labelledby="h-hist">
+    <header><h2 id="h-hist">Eventos cargados</h2></header>
+    <div class="list" id="lista"><p class="hint">Aquí aparecerán los eventos que cargues, con su estado: borrador, enviado o procesado.</p></div>
+  </section>
+</main>
+
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const CAMPOS = ["evento", "fecha", "tipo", "tema", "ponentes", "notas"];
+  const CLAVE_ACTUAL = "registro-eventos-actual";
+  const ESTADOS = { borrador: "Borrador", enviado: "Enviado", procesado: "Procesado" };
+
+  let db = null, assets = null;
+  let actualId = null;      // id del documento en eventos/<id>
+  let fotos = [];           // [{id, descripcion, nombre}]
+  let estado = "borrador";
+  let timer = null, escribiendo = Promise.resolve();
+
+  const status = (msg, tipo = "") => { const s = $("#status"); s.textContent = msg; s.className = "status " + tipo; };
+  const hoy = () => { const d = new Date(); d.setMinutes(d.getMinutes() - d.getTimezoneOffset()); return d.toISOString().slice(0, 10); };
+  const leerLocal = () => { try { return localStorage.getItem(CLAVE_ACTUAL); } catch { return null; } };
+  const guardarLocal = v => { try { v ? localStorage.setItem(CLAVE_ACTUAL, v) : localStorage.removeItem(CLAVE_ACTUAL); } catch {} };
+  const urlDe = id => "/_blob/" + id;
+
+  function formulario() {
+    const d = {}; CAMPOS.forEach(k => d[k] = $("#" + k).value.trim()); return d;
+  }
+  function llenar(d = {}) {
+    CAMPOS.forEach(k => $("#" + k).value = d[k] || "");
+    if (!$("#fecha").value) $("#fecha").value = hoy();
+    fotos = Array.isArray(d.fotos) ? d.fotos.map(f => ({ ...f })) : [];
+    estado = d.estado || "borrador";
+    pintarFotos(); pintarEstado();
+  }
+  function pintarEstado() {
+    const c = $("#estadoChip"); c.textContent = ESTADOS[estado] || estado; c.className = "chip " + estado;
+    $("#btnEnviar").textContent = estado === "borrador" ? "Enviar al agente" : "Volver a enviar";
+  }
+  function pintarFotos() {
+    const cont = $("#fotos"); cont.textContent = "";
+    fotos.forEach((f, i) => {
+      const fig = document.createElement("div"); fig.className = "photo";
+      let vis;
+      if (f.subiendo) { vis = document.createElement("div"); vis.className = "ph"; vis.textContent = "Subiendo…"; }
+      else { vis = document.createElement("img"); vis.src = f.url || urlDe(f.id); vis.alt = f.descripcion || ("Foto " + (i + 1)); vis.loading = "lazy"; }
+      const desc = document.createElement("input");
+      desc.id = "desc-" + (f.id || "tmp" + i); desc.placeholder = "Descripción (opcional)"; desc.value = f.descripcion || "";
+      desc.setAttribute("aria-label", "Descripción de la foto " + (i + 1));
+      desc.addEventListener("input", () => { f.descripcion = desc.value; programarGuardado(); });
+      const x = document.createElement("button"); x.className = "x"; x.type = "button"; x.textContent = "Quitar";
+      x.setAttribute("aria-label", "Quitar foto " + (i + 1));
+      x.addEventListener("click", () => { fotos.splice(i, 1); pintarFotos(); programarGuardado(); });
+      fig.append(vis, desc, x); cont.appendChild(fig);
+    });
+    const listas = fotos.filter(f => !f.subiendo).length;
+    $("#contador").textContent = listas ? `${listas} foto${listas === 1 ? "" : "s"}` : "";
+    $("#drop").hidden = fotos.length > 0;
+  }
+
+  // ---------- Guardado en la base del artifact ----------
+  async function asegurarDoc() {
+    if (actualId || !db) return actualId;
+    const ref = db.collection("eventos").doc();
+    actualId = ref.id; guardarLocal(actualId);
+    return actualId;
+  }
+  function cuerpo(extra = {}) {
+    return { ...formulario(), fotos: fotos.filter(f => !f.subiendo && f.id).map(({ id, descripcion, nombre }) => ({ id, descripcion: descripcion || "", nombre: nombre || "" })),
+             estado, actualizado: new Date().toISOString(), ...extra };
+  }
+  function programarGuardado() {
+    clearTimeout(timer); timer = setTimeout(() => guardar(), 700);
+  }
+  function guardar(extra) {
+    if (!db) return Promise.resolve(false);
+    escribiendo = escribiendo.then(async () => {
+      try {
+        await asegurarDoc();
+        await db.doc("eventos/" + actualId).set(cuerpo(extra));
+        if (!extra) status("Guardado.", "");
+        return true;
+      } catch (e) {
+        status(e && e.code === "quota_exceeded" ? "No queda espacio para más eventos. Pide al agente que archive los procesados." : "No se pudo guardar. Revisa tu conexión y vuelve a intentar.", "err");
+        return false;
+      }
+    });
+    return escribiendo;
+  }
+
+  // ---------- Fotos ----------
+  function reducir(archivo) {   // máx. 2000 px, JPEG 0.85: legible para el agente y liviano
+    return new Promise((ok, mal) => {
+      const img = new Image(), url = URL.createObjectURL(archivo);
+      img.onload = () => {
+        const k = Math.min(1, 2000 / Math.max(img.naturalWidth, img.naturalHeight));
+        const c = document.createElement("canvas"); c.width = Math.round(img.naturalWidth * k); c.height = Math.round(img.naturalHeight * k);
+        c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+        URL.revokeObjectURL(url);
+        c.toBlob(b => b ? ok(b) : mal(new Error("sin blob")), "image/jpeg", 0.85);
+      };
+      img.onerror = () => { URL.revokeObjectURL(url); mal(new Error("no se pudo leer")); };
+      img.src = url;
+    });
+  }
+  async function recibir(lista) {
+    const imgs = [...lista].filter(a => a.type.startsWith("image/") || /\.(heic|heif|jpe?g|png|webp)$/i.test(a.name));
+    if (!imgs.length) return;
+    if (!assets) { status("No se pueden subir fotos en esta vista. Abre la página con tu cuenta de claude.ai.", "err"); return; }
+    let fallas = 0;
+    const pendientes = imgs.map(a => { const f = { nombre: a.name, descripcion: "", subiendo: true }; fotos.push(f); return [a, f]; });
+    pintarFotos(); status(`Subiendo ${imgs.length} foto${imgs.length === 1 ? "" : "s"}…`);
+    for (const [a, f] of pendientes) {
+      try {
+        let blob; try { blob = await reducir(a); } catch { blob = a; }
+        const r = await assets.upload(blob);
+        Object.assign(f, { id: r.id, url: r.url, subiendo: false });
+      } catch (e) {
+        fallas++; fotos.splice(fotos.indexOf(f), 1);
+      }
+      pintarFotos();
+    }
+    await guardar();
+    status(fallas ? `${fallas} foto${fallas === 1 ? "" : "s"} no se pudo subir. Prueba de nuevo o expórtala como JPG.` : "Fotos guardadas.", fallas ? "err" : "ok");
+  }
+  for (const id of ["#inCam", "#inGal"]) { const el = $(id); el.addEventListener("change", () => { recibir(el.files); el.value = ""; }); }
+  const drop = $("#drop");
+  drop.addEventListener("dragover", e => { e.preventDefault(); drop.classList.add("over"); });
+  drop.addEventListener("dragleave", () => drop.classList.remove("over"));
+  drop.addEventListener("drop", e => { e.preventDefault(); drop.classList.remove("over"); recibir(e.dataTransfer.files); });
+  document.addEventListener("paste", e => { if (e.clipboardData && e.clipboardData.files.length) recibir(e.clipboardData.files); });
+
+  // ---------- Acciones ----------
+  CAMPOS.forEach(k => $("#" + k).addEventListener("input", programarGuardado));
+  ["tipo", "tema", "fecha"].forEach(k => $("#" + k).addEventListener("change", programarGuardado));
+
+  $("#btnEnviar").addEventListener("click", async () => {
+    const d = formulario();
+    if (!d.evento) { status("Escribe el nombre del evento antes de enviar.", "err"); $("#evento").focus(); return; }
+    if (fotos.some(f => f.subiendo)) { status("Espera a que terminen de subir las fotos.", "err"); return; }
+    if (!fotos.length && !d.notas) { status("Agrega al menos una foto o una nota.", "err"); return; }
+    clearTimeout(timer);
+    estado = "enviado"; pintarEstado();
+    const ok = await guardar({ enviado: new Date().toISOString() });
+    if (ok) status("Enviado. Ahora escribe en el chat con Claude: \"procesa el evento\".", "ok");
+  });
+  $("#btnNuevo").addEventListener("click", () => { $("#confirmNuevo").hidden = false; });
+  $("#noNuevo").addEventListener("click", () => { $("#confirmNuevo").hidden = true; });
+  $("#siNuevo").addEventListener("click", async () => {
+    $("#confirmNuevo").hidden = true; clearTimeout(timer);
+    if (actualId) await guardar();
+    actualId = null; guardarLocal(null); llenar({}); status("Formulario listo para un evento nuevo.");
+  });
+
+  function abrir(id, d) {
+    actualId = id; guardarLocal(id); llenar(d); status("Abriste \"" + (d.evento || "evento") + "\".");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+  function pintarLista(snap) {
+    const cont = $("#lista");
+    if (snap.empty) { cont.innerHTML = '<p class="hint">Aquí aparecerán los eventos que cargues, con su estado: borrador, enviado o procesado.</p>'; return; }
+    cont.textContent = "";
+    snap.docs.forEach(doc => {
+      const d = doc.data() || {};
+      const it = document.createElement("div"); it.className = "item";
+      const izq = document.createElement("div"); izq.style.minWidth = "0";
+      const b = document.createElement("b"); b.textContent = d.evento || "(sin nombre)";
+      const sm = document.createElement("small");
+      const n = Array.isArray(d.fotos) ? d.fotos.length : 0;
+      sm.textContent = `${d.fecha || "sin fecha"} · ${n} foto${n === 1 ? "" : "s"}`;
+      izq.append(b, sm);
+      const acts = document.createElement("div"); acts.className = "acts";
+      const chip = document.createElement("span"); chip.className = "chip " + (d.estado || "borrador"); chip.textContent = ESTADOS[d.estado] || "Borrador";
+      const btn = document.createElement("button"); btn.type = "button"; btn.textContent = doc.id === actualId ? "Abierto" : "Abrir";
+      btn.disabled = doc.id === actualId;
+      btn.addEventListener("click", () => abrir(doc.id, d));
+      acts.append(chip, btn); it.append(izq, acts); cont.appendChild(it);
+      if (doc.id === actualId && d.estado && d.estado !== estado) { estado = d.estado; pintarEstado(); }
+    });
+  }
+
+  // ---------- Arranque ----------
+  llenar({});
+  (async () => {
+    const espera = setTimeout(() => { if (!db) $("#noStore").hidden = false; }, 10000);
+    try {
+      [db, assets] = await Promise.all([claude.use("db"), claude.use("assets")]);
+    } catch { db = null; assets = null; }
+    clearTimeout(espera);
+    if (!db) { $("#noStore").hidden = false; return; }
+    if (!assets) { $("#pickCam").hidden = true; $("#pickGal").hidden = true; $("#drop").textContent = "Solo quien puede editar esta página puede subir fotos."; }
+    const guardado = leerLocal();
+    if (guardado) {
+      try {
+        const s = await db.doc("eventos/" + guardado).get();
+        if (s.exists) { actualId = guardado; llenar(s.data()); } else guardarLocal(null);
+      } catch {}
+    }
+    db.collection("eventos").orderBy("actualizado", "desc").limit(30)
+      .onSnapshot(pintarLista, () => { $("#lista").innerHTML = '<p class="hint">No se pudo cargar la lista de eventos.</p>'; });
+  })();
+})();
+</script>

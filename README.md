@@ -12,15 +12,15 @@ plantillas/                    → formato base de ambos archivos
 ```
 
 ## Formulario
-Abre `formulario/index.html` en el navegador (computador o iPhone desde la app Archivos). Funciona sin internet.
+**Úsalo aquí:** https://claude.ai/artifact/GnRaiuNczvsQXvajmf4WAk (abre en la app de Claude o en el navegador con tu cuenta).
 1. **Datos del evento**: nombre, fecha, tipo, tema, ponentes.
-2. **Fotos**: tomar foto con la cámara o elegir varias de la galería (en computador también arrastrar o pegar). Cada foto admite una descripción opcional.
-3. **Notas sueltas** (opcional): textos que no salgan en las fotos.
+2. **Fotos**: "Tomar foto" o "Elegir de la galería" (varias a la vez). Cada foto se guarda al instante y admite una descripción.
+3. **Notas sueltas** (opcional).
 
-Pulsa **📦 Descargar paquete para el agente (.zip)** y envíalo al agente (o súbelo a `eventos/entrada/`).
-El agente devuelve el entregable: ideas clave, insights, libros, tareas, el `.reminders.json` y el PDF del evento.
-El borrador se guarda en el navegador hasta que pulses "Limpiar formulario".
-Hoja en blanco para llenar a mano: `entregables/formulario-evento.pdf` (o `formulario/index.html?en-blanco`).
+Toca **Enviar al agente** y escribe en el chat con Claude: "procesa el evento". El agente lee las fotos y notas
+y entrega ideas clave, insights, libros, tareas (.reminders.json) y el PDF. Abajo ves el historial con su estado.
+
+Alternativa sin internet: `formulario/index.html` (descarga un .zip). Hoja en blanco imprimible: `entregables/formulario-evento.pdf`.
 
 ## Skill `crear-pdf` (para todos los proyectos)
 ```bash
